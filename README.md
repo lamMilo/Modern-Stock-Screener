@@ -1,118 +1,217 @@
-# 💹 Modern Stock Screener
+# 📊 Modern Stock Screener Plus
 
-A **modern, interactive stock screener desktop application** built with **Python** and **PyQt5**. Analyze stocks with key indicators, get recommendations, and view growth metrics in a beautiful, responsive GUI.
-
-> ⚠️ This tool is for **educational purposes only**. Always do your own research before investing.
+A **modern, interactive stock screener** built entirely in **Python** with **PyQt5** and **yFinance**.  
+This desktop app analyzes multiple stocks and ranks them based on technical and fundamental signals — all displayed in a sleek GUI with dark and light mode support.
 
 ---
 
 ## 🧠 Overview
 
-| Feature | Details |
-|---------|---------|
-| **Platform** | Desktop (Windows / macOS / Linux) |
-| **GUI** | PyQt5 |
-| **Stock Data** | Yahoo Finance via `yfinance` |
-| **Python Version** | 3.8+ |
-| **Indicators** | 50/200-day Moving Average, P/E ratio, RSI |
-| **Recommendations** | Buy / Hold / Strong Buy / Avoid (Optional Leverage) |
-| **Themes** | Light & Dark Mode |
+| Key Info | Details |
+|-----------|----------|
+| **Language** | Python 3 |
+| **Interface** | PyQt5 (Desktop GUI) |
+| **Data Source** | Yahoo Finance via `yfinance` |
+| **File** | `stock_screener_modern_plus.py` |
+| **Platform** | Cross-platform (Windows / macOS / Linux) |
+
+This app allows traders, investors, and analysts to screen popular stocks and quickly identify **buy**, **hold**, or **avoid** opportunities.
 
 ---
 
-## 📊 Key Features
+## ✨ Features
 
-| Feature | Description |
-|---------|-------------|
-| **Automated Analysis** | Calculate scores based on price, moving averages, P/E, RSI |
-| **Growth Tracking** | 1D / 1W / 1Y / All-time % growth displayed with colors |
-| **Recommendations** | Personalized advice with optional leverage guidance |
-| **Progress Bar** | Shows scanning progress without freezing GUI |
-| **Real-time Search/Filter** | Filter stocks by ticker or reason |
-| **Export to CSV** | Save results for later review |
-| **Dark / Light Mode** | Switch themes anytime for better visibility |
+- 🧮 Real-time stock data from Yahoo Finance  
+- 💹 50-day & 200-day moving average analysis  
+- 📈 RSI-based momentum scoring  
+- 💰 P/E ratio valuation checks  
+- 📊 Growth analysis (1D / 1W / 1Y / All-Time)  
+- 🌙 Dark / Light mode toggle  
+- 💾 Export results to CSV  
+- 🔍 Search filter for tickers or reasons  
+- ⚡ Multithreaded scanning for smooth performance  
+- 📊 Auto recommendations: **Strong Buy**, **Neutral**, **Avoid**  
 
 ---
 
-## 🚀 Installation
+## ⚙️ Requirements
 
-1. Clone the repository:
+Before running, install the dependencies below:
 
 ```bash
-git clone https://github.com/lAmMilo/Modern-Stock-Screener.git
-cd Modern-Stock-Screener
-Install dependencies:
+pip install pandas numpy yfinance PyQt5
+```
 
-bash
-Code kopieren
-pip install -r requirements.txt
-Dependencies: PyQt5, pandas, numpy, yfinance
+You’ll need **Python 3.8+**.
 
-⚙️ Usage
-Run the application:
+---
 
-bash
-Code kopieren
+## 🚀 How to Run
+
+1. Save the file as `stock_screener_modern_plus.py`  
+2. Open a terminal or command prompt in that directory  
+3. Run:
+
+```bash
 python stock_screener_modern_plus.py
-Click Run Screener to start scanning stocks.
+```
 
-Toggle Light / Dark Mode with the checkbox.
+4. The graphical dashboard will launch — click **▶ Run Screener** to start analyzing default tickers (AAPL, TSLA, NVDA, etc.)
 
-Filter stocks using the search bar.
+---
 
-Optionally enable Leverage for recommendations.
+## 📊 Scoring System
 
-Export results via the Export CSV button.
+| Factor | Condition | Score |
+|---------|------------|--------|
+| Price > 50MA | Trend confirmation | +1 |
+| Price > 200MA | Long-term trend | +1 |
+| RSI < 30 | Oversold | +1 |
+| RSI > 70 | Overbought | -1 |
+| P/E < 10 | Undervalued | +1 |
+| P/E < 25 | Reasonable | +0.5 |
+| P/E > 70 | Overvalued | -1 |
 
-🛠️ Tickers Included
-Ticker	Company
-AAPL	Apple Inc.
-MSFT	Microsoft Corp.
-TSLA	Tesla Inc.
-NVDA	NVIDIA Corp.
-AMD	Advanced Micro Devices
-INTC	Intel Corp.
-F	Ford Motor Co.
-NIO	NIO Inc.
-XOM	Exxon Mobil
-PFE	Pfizer Inc.
-KO	Coca-Cola Co.
-PLTR	Palantir
-SHOP	Shopify
-SQ	Block Inc.
-BYND	Beyond Meat
+Higher total scores indicate stronger buying signals.
 
-You can add or modify tickers directly in the script.
+---
 
-🖥️ Screenshots
+## 🧠 Recommendation Logic
 
-Dark theme with colored growth indicators.
+| Score | Recommendation |
+|--------|----------------|
+| ≥ 2 | 🟢 Strong Buy |
+| ≥ 1 | 🟡 Buy / Hold |
+| ≥ 0 | ⚪ Neutral |
+| < 0 | 🔴 Avoid / Risky |
 
+> Enable **Leverage Mode** for more aggressive recommendations.
 
-Light theme with filtered stocks.
+---
 
-🧾 Contributing
-Contributions are welcome!
+## 🧩 Example Output
 
-Fork the repository.
+| Ticker | Score | Price | P/E | RSI | 1D % | 1W % | 1Y % | Reasons | Recommendation |
+|---------|--------|--------|------|------|--------|--------|--------|----------|----------------|
+| AAPL | 2.5 | \$175.30 | 28.4 | 45.2 | 1.12% | 2.45% | 35.80% | Price above 50MA; Reasonable PE | Strong Buy |
+| TSLA | 0.5 | \$240.12 | 75.6 | 73.8 | -1.2% | -3.4% | 12.0% | High PE; RSI indicates overbought | Neutral |
 
-Create a new branch (git checkout -b feature/your-feature).
+---
 
-Make your changes and commit (git commit -m "Add feature").
+## 💡 Quick Reference
 
-Push to your branch (git push origin feature/your-feature).
+| Key | Description |
+|-----|--------------|
+| ▶ Run Screener | Starts stock analysis |
+| 💾 Export CSV | Save results to file |
+| 🔍 Search | Filter by ticker or reason |
+| 🌙 Light Mode | Toggle theme |
+| 📈 Score Colors | Green = Positive, Red = Negative |
 
-Open a Pull Request.
+---
 
-⚠️ Disclaimer
-This tool is provided as-is without any warranty.
-Use at your own risk. Always verify stock information and comply with financial regulations.
+## 🧱 How It Works
 
-⭐ Credits
-PyQt5 – GUI framework
+1. Fetches stock data via `yfinance`  
+2. Calculates indicators:
+   - Moving Averages (50 & 200-day)
+   - RSI (Relative Strength Index)
+   - P/E Ratio (from Yahoo Finance info)
+3. Computes growth rates (1D / 1W / 1Y / All-Time)
+4. Scores each stock numerically
+5. Displays in an interactive table with filters and export options
 
-yfinance – Stock data source
+---
 
-pandas & numpy – Data processing
+## 📁 File Overview
 
-Open-source contributors for UI inspiration and stock analysis logic
+Everything is contained in **one Python file**:
+
+```
+stock_screener_modern_plus.py
+```
+
+No other modules or assets are required. The script handles GUI creation, data fetching, and scoring all within this single file.
+
+---
+
+## ⚡ Technologies Used
+
+- **PyQt5** – GUI framework  
+- **yFinance** – Market data API  
+- **Pandas / NumPy** – Data manipulation and calculations  
+- **Multithreading** – To keep the UI responsive while fetching data  
+
+---
+
+## 🧠 Default Tickers
+
+When first launched, the app analyzes:
+
+```
+AAPL, MSFT, TSLA, NVDA, AMD, INTC, F, NIO, XOM, PFE, KO, PLTR, SHOP, SQ, BYND
+```
+
+You can modify this list in the `if __name__ == "__main__":` section.
+
+---
+
+## 🧮 Example Usage in Code
+
+You can also call parts of this script directly in Python:
+
+```python
+from stock_screener_modern_plus import score_ticker
+
+result = score_ticker("AAPL")
+print(result)
+```
+
+Output:
+
+```python
+{
+  'ticker': 'AAPL',
+  'score': 2.5,
+  'price': 175.30,
+  'pe': 28.4,
+  'rsi': 45.2,
+  'reasons': 'price>50MA;reasonable PE',
+  'growth_1d': 1.12,
+  'growth_1w': 2.45,
+  'growth_1y': 35.8
+}
+```
+
+---
+
+## 🧠 Architecture
+
+### Main Components
+
+- **Helper Functions** – RSI, MA, scoring, growth  
+- **Worker Thread** – Background stock scanning  
+- **PyQt5 GUI** – Table view, search, progress bar, theme switch  
+- **Export System** – Saves filtered results to CSV  
+
+---
+
+## 🧾 License
+
+This project is released under the **MIT License**.  
+You may use, modify, or distribute freely with attribution.
+
+---
+
+## 🙌 Credits
+
+- **PyQt5 Community** – GUI framework support  
+- **Yahoo Finance (yFinance)** – Market data provider  
+- **NumPy / Pandas** – Data analysis libraries  
+
+---
+
+## ⭐ Support
+
+If you enjoy this project, please consider **starring the repository ⭐** —  
+it helps others find it and supports future improvements.
