@@ -215,3 +215,15 @@ You may use, modify, or distribute freely with attribution.
 
 If you enjoy this project, please consider **starring the repository ⭐** —  
 it helps others find it and supports future improvements.
+
+## ⚖️ Disclaimer
+
+ This software is provided for **educational and informational purposes only**.  
+ It does **not constitute financial, investment, or trading advice**.  
+ All stock data and analysis results are retrieved from **third-party sources (Yahoo Finance)**, and accuracy is **not guaranteed**.  
+  
+ Always perform your own due diligence and consult a **licensed financial advisor** before making investment decisions.  
+  
+ The author(s) assume **no liability or responsibility** for any losses, damages, or consequences resulting from the use of this software.  
+  
+ Use this application at your **own risk**.
